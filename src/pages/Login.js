@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
 	View,
 	KeyboardAvoidingView,
-	Platform,
+	AsyncStorage,
 	Image,
 	StyleSheet,
 	Text,
@@ -10,14 +10,33 @@ import {
 	TouchableOpacity
 } from 'react-native'
 
+import api from '../services/api'
+
 import logo from '../assets/logo.png'
 
-const Login = () => {
+const Login = ({ navigation }) => {
 	const [email, setEmail] = useState('')
 	const [techs, setTechs] = useState('')
 
+	useEffect(() => {
+		AsyncStorage.getItem('user').ther(user => {
+			if (user) {
+				navigation.navigate('List')
+			}
+		})
+	}, [])
+
 	const handleSubmit = async () => {
-		console.log(email, techs)
+		const response = await api.post('/sessions', {
+			email
+		})
+
+		const { _id } = response.data
+
+		await AsyncStorage.setItem('user', _id)
+		await AsyncStorage.setItem('techs', techs)
+
+		navigation.navigate('List')
 	}
 
 	return (
