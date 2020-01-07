@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
 	View,
 	KeyboardAvoidingView,
@@ -13,12 +13,15 @@ import {
 import logo from '../assets/logo.png'
 
 const Login = () => {
+	const [email, setEmail] = useState('')
+	const [techs, setTechs] = useState('')
+
+	const handleSubmit = async () => {
+		console.log(email, techs)
+	}
+
 	return (
-		<KeyboardAvoidingView
-			enabled={Platform.OS === 'ios'}
-			behavior='padding'
-			style={styles.container}
-		>
+		<KeyboardAvoidingView behavior='padding' style={styles.container}>
 			<Image source={logo} />
 
 			<View style={styles.form}>
@@ -28,8 +31,10 @@ const Login = () => {
 					placeholder='Seu email'
 					placeholderTextColor='#999'
 					keyboardType='email-address'
-					autoCapitalize='none'
+					autoCapitalize='words'
 					autoCorrect={false}
+					value={email}
+					onChangeText={setEmail}
 				/>
 
 				<Text style={styles.label}>TECNOLOGIAS *</Text>
@@ -37,11 +42,13 @@ const Login = () => {
 					style={styles.input}
 					placeholder='Tecnologias de interesse'
 					placeholderTextColor='#999'
-					autoCapitalize='words'
+					autoCapitalize='none'
 					autoCorrect={false}
+					value={techs}
+					onChangeText={setTechs}
 				/>
 
-				<TouchableOpacity style={styles.button}>
+				<TouchableOpacity onPress={handleSubmit} style={styles.button}>
 					<Text style={styles.buttonText}>Encontrar spots</Text>
 				</TouchableOpacity>
 			</View>
