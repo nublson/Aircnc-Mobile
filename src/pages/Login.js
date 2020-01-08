@@ -19,7 +19,7 @@ const Login = ({ navigation }) => {
 	const [techs, setTechs] = useState('')
 
 	useEffect(() => {
-		AsyncStorage.getItem('user').ther(user => {
+		AsyncStorage.getItem('user').then(user => {
 			if (user) {
 				navigation.navigate('List')
 			}
