@@ -1,5 +1,7 @@
 # Aircnc (Mobile w/ React Native)
 
+Mobile version [here](https://github.com/nubelsondev/Aircnc).
+
 ![Aircnc Preview](./thumbnail.png)
 
 This is the frontend mobile version of Aircnc, focused on the developer side. Allows Developers to login by typing in the email and technologies they are interested in. This redirects them to the application's homepage where they can see all the spots filtered by the user's technologies of entry, thus making it possible to make the Booking request of the spot.
