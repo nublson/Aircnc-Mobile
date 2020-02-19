@@ -1,6 +1,6 @@
 # Aircnc (Mobile w/ React Native)
 
-Mobile version [here](https://github.com/nubelsondev/Aircnc).
+Web version [here](https://github.com/nubelsondev/Aircnc).
 
 ![Aircnc Preview](./thumbnail.png)
 
